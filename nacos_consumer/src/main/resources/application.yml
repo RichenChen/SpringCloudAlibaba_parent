@@ -1,0 +1,29 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+
+logging:
+  level:
+    com.example.nacos_consumer.service.OpenFeignService: debug
+
+management:
+  endpoint:
+    web:
+      exposure:
+        include:'*'
+
+feign:
+  sentinel:
+    enabled: true
+
+service-url:
+    nacos-user-service: http://nacos-provider
